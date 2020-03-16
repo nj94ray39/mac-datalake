@@ -2,7 +2,7 @@
 ##################################################
 #
 #	Author:
-#		 Macquarie Group
+#		 BeCenturien Group
 #
 #	Description:
 #		The script marks the start of bake stage.

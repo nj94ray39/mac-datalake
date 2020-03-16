@@ -16,10 +16,16 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+# Run common environment file
+. /arturo/scripts/env/stage_script.env
+
+# Download Keytabs
+mkdir -p /app/opt/cloudera/keytabs
+aws s3 cp $s3_S3BucketAndPrefix/cm/keytabs /app/opt/cloudera/keytabs --recursive
+chown -R cloudera-scm:cloudera-scm /app/opt/cloudera/keytabs
+chmod 744 /app/opt/cloudera/keytabs/custom_script.sh
 
 echo "Done..."

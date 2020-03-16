@@ -16,10 +16,13 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
-
-echo "Start stage"
-
-echo "Done..."
+# Disable SELinux in /etc/selinux/config
+echo "Disabling SELinux"
+echo "SELINUX set to:"
+grep SELINUX /etc/sysconfig/selinux
+echo "Disabling SELINUX"
+sed -i 's/^SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+sed -i 's/^SELINUX=permissive/SELINUX=disabled/g' /etc/selinux/config
+echo "Done... "

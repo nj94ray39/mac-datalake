@@ -16,10 +16,15 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+# Run common environment file
+. /arturo/scripts/env/stage_script.env
+
+echo "Staging JDK"
+mkdir -p /tmp/repo/jdk/${jdk_ver}
+
+aws s3 cp $s3_S3BucketAndPrefix/repo/jdk/${jdk_ver}.tar.gz /tmp/repo/jdk/${jdk_ver}
 
 echo "Done..."

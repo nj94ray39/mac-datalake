@@ -16,10 +16,16 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+# Run common environment file
+/arturo/scripts/env/stage_script.env
+
+echo "Staging CM rpms"
+
+mkdir -p /tmp/repo/cn/$(cm_ver)
+
+aws s3 sync $s3_S3BucketAndPrefix/repo/cdh5/cm/${cm_ver}/ /tmp/repo/cm/${cm_ver}/
 
 echo "Done..."

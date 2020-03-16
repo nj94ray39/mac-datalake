@@ -16,10 +16,15 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
+# Enable appstart service
 
-echo "Start stage"
+echo "Enabling appstart service"
 
-echo "Done..."
+cp /arturo/scripts/systemd/appstart /etc/rc.d/init.d/appstart
+cp /arturo/scripts/systemd/appstart.service /etc/systemd/system/appstart.service
+chmod 755 /etc/rc.d/init.d/appstart
+systemctl enable appstart.service
+
+echo "Done... "

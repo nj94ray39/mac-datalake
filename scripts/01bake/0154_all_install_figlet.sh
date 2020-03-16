@@ -16,10 +16,21 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
-
-echo "Done..."
+# Install figlet
+if [ -f /arturo/tools/figlet-2.2.5.tar.gz ]; then
+  yum -y install gcc
+  cd /arturo/tools
+  tar xvfz figlet-2.2.5.tar.gz
+  cd figlet-2.2.5
+  make
+  cp -rf fonts /usr/local/share/figlet
+  cp figlet /usr/local/bin
+  echo "Figlet installed"
+  else
+    echo "Figlet tar.gz missing"
+    echo "Figlet not installed"
+fi
+echo "Done."

@@ -16,10 +16,16 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+# Setup root profile
+echo "Setting up root profilee"
 
+if [ -f /arturo/scripts/env/aliases_root ]
+then
+  echo "" >> /root/.bash_profile
+  echo "# add useful aliases" >> /root/.bash_profile
+  echo "". /arturo/scripts/env/aliases_root* >> /root/.bash_profile
+fi
 echo "Done..."

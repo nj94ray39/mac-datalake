@@ -16,10 +16,9 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+echo "End stage"
 
 echo "Done..."

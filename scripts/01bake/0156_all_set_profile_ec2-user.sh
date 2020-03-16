@@ -16,10 +16,24 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+# Run common environment file
+. /arturo/scripts/env/stage_script.env
 
-echo "Done..."
+# Setup root profile
+echo "Setting up ec2-user profile"
+
+echo "Adding figlet banner"
+env=$(echo ${pipelineBranch%-*} | tr '[:lower:]' '[:upper:]')
+banner="CDH ${env} ENV"
+
+if [ -f /usr/local/bin/figlet ]; then
+    echo "# CDH banner" >> /home/ec2-user/.bash_profile
+    echo "figlet \"${banner}\"" > /home/ec2-user/.bash_profile
+  else
+    echo "# CDH banner" >> /home/ec2-user/.bash_profile
+    echo "echo ${banner}" >> /home/ec2-user/.bash_profile
+fi
+echo "Done.."

@@ -17,9 +17,11 @@
 #################################################
 
 #Exit if an error is encountered.
+# Enable ncsd
 
-set -e
+echo "Enabling ncsd"
 
-echo "Start stage"
+systemctl start nscd.service
+systemctl enable nscd.service
 
-echo "Done..."
+echo "Done."

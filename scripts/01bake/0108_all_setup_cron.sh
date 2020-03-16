@@ -16,10 +16,16 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
-
-echo "Start stage"
-
+echo "Setting up scheduled cron jobs"
+for cron_schedule in cron.1minutely cron.5minutely cron.hourly cron.daily cron.weekly cron.monthly
+do
+  if [ -d /arturo/scripts/${cron_schedule} ]
+    then
+      echo "Setting up schedule for ${cron_schedule}"
+      cp /arturo/scripts/${cron_schedule}/* /etc/${cron_schedule}
+      chmod 755 /etc/${cron_schedule}/*
+    fi
+done
 echo "Done..."

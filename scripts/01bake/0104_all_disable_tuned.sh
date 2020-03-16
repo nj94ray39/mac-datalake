@@ -16,10 +16,12 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+# Disable tuned
 
+echo "Disabling tuned"
+systemctl stop tuned.service
+systemctl disable tuned.service
 echo "Done..."

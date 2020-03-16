@@ -16,10 +16,10 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+echo "Setting static hostname"
+echo "preserve_hostname: true" >> /etc/cloud/cloud.cfg
 
-echo "Done..."
+echo "Done."

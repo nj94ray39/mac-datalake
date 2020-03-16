@@ -16,10 +16,9 @@
 #
 #################################################
 
-#Exit if an error is encountered.
-
+# Exit if an error is encountered.
 set -e
 
-echo "Start stage"
+cp /etc/hosts /etc/cdh_hosts
 
 echo "Done..."
